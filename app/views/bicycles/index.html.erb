@@ -1,2 +1,16 @@
 <h1>Here are all the bikes available</h1>
+
+<%= @bicycles.each do |bicycle| %>
+  <div class="card">
+    <%= link_to bicycle_path(bicycle) do %>
+      <%= cl_image_tag bicycle.photos.first.key, height: 300, width: 400, crop: :fill %>
+      <div>
+        <%= bicycle.model %>
+        <p><%= bicycle.price_per_day %> $ <span> / day </span></p>
+        <p>Available from <span><%= bicycle.start_date %></span> - <span><%= bicycle.end_date %></span></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= link_to "Post your bike to rent", new_bicycle_path %>
