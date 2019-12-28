@@ -1,6 +1,14 @@
 class BicyclesController < ApplicationController
   def index
-    @bicycles = Bicycle.all
+    @bicycles = Bicycle.geocoded
+
+    @markers = @bicycles.map do |bicycle|
+      {
+        lat: bicycle.latitude,
+        lng: bicycle.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bicycle: bicycle })
+      }
+    end
   end
 
   def show

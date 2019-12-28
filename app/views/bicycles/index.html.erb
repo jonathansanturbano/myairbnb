@@ -1,16 +1,28 @@
-<h1>Here are all the bikes available</h1>
+<h1>There are <%= @bicycles.count %> bikes available</h1>
 
-<%= @bicycles.each do |bicycle| %>
-  <div class="card">
-    <%= link_to bicycle_path(bicycle) do %>
-      <%= cl_image_tag bicycle.photos.first.key, height: 300, width: 400, crop: :fill %>
-      <div>
-        <%= bicycle.model %>
-        <p><%= bicycle.price_per_day %> $ <span> / day </span></p>
-        <p>Available from <span><%= bicycle.start_date %></span> - <span><%= bicycle.end_date %></span></p>
-      </div>
+
+<div class="megabox">
+  <div class="cards">
+    <% @bicycles.each do |bicycle| %>
+      <%= link_to bicycle_path(bicycle) do %>
+        <div class="card-product">
+            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 300, crop: :fill %>
+            <div class="card-information">
+              <h2><%= bicycle.model %></h2>
+              <p><%= bicycle.price_per_day %> € <span> / day </span></p>
+            </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<% end %>
 
-<%= link_to "Post your bike to rent", new_bicycle_path %>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</div>
+
+<%= link_to "Post your bike to rent", new_bicycle_path, { class: 'btn btn-primary' } %>
