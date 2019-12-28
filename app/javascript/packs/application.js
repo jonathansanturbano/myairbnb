@@ -1,9 +1,5 @@
 import "bootstrap";
-import flatpickr from "flatpickr";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { initMapbox } from '../plugins/init_mapbox';
 
-const datepickers = flatpickr(".datepicker", {
-  altInput: true,
-  altFormat: "F j, Y",
-  dateFormat: "Y-m-d",
-  minDate: "today"
-});
+initMapbox();
