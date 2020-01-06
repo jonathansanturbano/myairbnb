@@ -1,2 +1,5 @@
-<h2><%= bicycle.model %></h2>
-<p><%= bicycle.address %></p>
+<%= link_to bicycle_path(bicycle) do %>
+  <h3><%= bicycle.model %></h3>
+  <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+  <p><%= bicycle.price_per_day %><span> € / day </span></p>
+<% end %>

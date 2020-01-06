@@ -1,14 +1,14 @@
 <h1>There are <%= @bicycles.count %> bikes available</h1>
 
-
 <div class="megabox">
+
   <div class="cards">
     <% @bicycles.each do |bicycle| %>
       <%= link_to bicycle_path(bicycle) do %>
         <div class="card-product">
-            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 300, crop: :fill %>
+            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
             <div class="card-information">
-              <h2><%= bicycle.model %></h2>
+              <h3><%= bicycle.model %></h3>
               <p><%= bicycle.price_per_day %> € <span> / day </span></p>
             </div>
         </div>
@@ -19,10 +19,11 @@
   <div
     id="map"
     style="width: 100%;
-    height: 600px;"
+    height: 100vh;
+    top: 0;
+    position: sticky;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
-</div>
 
-<%= link_to "Post your bike to rent", new_bicycle_path, { class: 'btn btn-primary' } %>
+</div>
