@@ -1,14 +1,15 @@
 class BicyclesController < ApplicationController
-  def index
-    @bicycles = Bicycle.geocoded
+  before_action :set_coordinates, only: [:index]
 
-    @markers = @bicycles.map do |bicycle|
-      {
-        lat: bicycle.latitude,
-        lng: bicycle.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { bicycle: bicycle })
-      }
+  def index
+    if !session[:latitude].nil?
+      @bicycles = Bicycle.geocoded.near([session[:latitude].to_f, session[:longitude].to_f], 3)
+    elsif params[:query].present?
+      @bicycles = Bicycle.geocoded.near(params[:query], 3)
+    else
+      @bicycles = Bicycle.geocoded
     end
+    @markers = create_map(@bicycles)
   end
 
   def show
@@ -34,5 +35,20 @@ class BicyclesController < ApplicationController
 
   def bicycle_params
     params.require(:bicycle).permit(:model, :price_per_day, :start_date, :end_date, photos: [])
+  end
+
+  def set_coordinates
+    session[:longitude] = params[:lng]
+    session[:latitude] = params[:lat]
+  end
+
+  def create_map(bicycles)
+    bicycles.map do |bicycle|
+      {
+        lat: bicycle.latitude,
+        lng: bicycle.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bicycle: bicycle })
+      }
+    end
   end
 end

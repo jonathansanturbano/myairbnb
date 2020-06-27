@@ -3,9 +3,13 @@
     <h1>Welcome to La Bicycleta!</h1>
     <p>The go-to marketplace for short-term bike rentals in Paris</p>
     <div class="search-inline">
-      <div class="search-box">
-      </div>
-      <%= link_to "Look at bikes", bicycles_path, class: "btn btn-primary" %>
+      <form action="/bicycles" method="get" style="width: 80%">
+        <div class="d-flex" style=>
+          <input class="form-control" id="bicycle_address" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
+          <button type="submit" class="btn btn-lg btn-info btn-block" style="padding: 0; margin-left: 1rem; width: 200px;">Search</button>
+        </div>
+        <a class="geoloc pl-2" style="color: white;">Use my current location</a>
+      </form>
     </div>
   </div>
 </div>

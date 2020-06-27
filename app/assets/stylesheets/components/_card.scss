@@ -47,12 +47,14 @@ a:hover{
 
 @media(max-width: 768px) {
   .megabox{
-  display: block}
+  display: block
+  }
 }
 
 @media(max-width: 576px) {
   .megabox{
-  display: block}
+  display: block
+  }
   .cards {
     grid-template-columns: 1fr;
   }

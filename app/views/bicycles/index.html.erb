@@ -1,4 +1,4 @@
-<h1>There are <%= @bicycles.count %> bikes available</h1>
+<h1>There are <%= @bicycles.length %> bikes available</h1>
 
 
 <div class="megabox">
@@ -8,7 +8,7 @@
         <div class="card-product">
             <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 300, crop: :fill %>
             <div class="card-information">
-              <h2><%= bicycle.model %></h2>
+              <h4><%= bicycle.model %></h4>
               <p><%= bicycle.price_per_day %> € <span> / day </span></p>
             </div>
         </div>

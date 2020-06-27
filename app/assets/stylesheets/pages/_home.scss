@@ -26,3 +26,12 @@
 .search-inline{
   display: flex;
 }
+
+.geoloc {
+  font-style: italic;
+  font-weight: bold;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
