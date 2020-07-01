@@ -1,9 +1,17 @@
-<%= simple_form_for @bicycle do |f| %>
-  <%= f.input_field :model, placeholder: "Your bike model" %>
-  <%= f.input_field :price_per_day, placeholder: "Your daily price" %>
-  <%= f.input :address, placeholder: "Your address" %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.input :start_date, placeholder: "Your daily price", input_html: {class: "datepicker"} %>
-  <%= f.input :end_date, placeholder: "Your daily price", input_html: {class: "datepicker"} %>
-<%= f.submit %>
-<% end %>
+<div class="container">
+  <h1 class="text-center py-3">Post your bike</h1>
+
+  <%= simple_form_for @bicycle, defaults: { input_html: { class: 'form_boxes' } } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="boxes_inline">
+      <%= f.input_field :model, placeholder: "Bike model" %>
+      <%= f.input_field :price_per_day, placeholder: "Daily price" %>
+    </div>
+    <%= f.input :address, placeholder: "Your address" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :start_date, placeholder: "Your daily price", input_html: {class: "datepicker"} %>
+    <%= f.input :end_date, placeholder: "Your daily price", input_html: {class: "datepicker"} %>
+  <%= f.submit %>
+  <% end %>
+</div>
