@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,4 +16,20 @@
   border-radius: 50%;
   color: aliceblue;
   font-size: 1.5rem;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 576px) {
+  .navbar-link {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 576) {
+  .navbar-nav .mr-auto > li {
+    padding: 1rem;
+  }
 }

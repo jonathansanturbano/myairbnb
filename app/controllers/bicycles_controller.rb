@@ -5,7 +5,7 @@ class BicyclesController < ApplicationController
     if !session[:latitude].nil?
       @bicycles = Bicycle.geocoded.near([session[:latitude].to_f, session[:longitude].to_f], 3)
     elsif params[:query].present?
-      @bicycles = Bicycle.geocoded.near(params[:query], 3)
+      @bicycles = Bicycle.geocoded.near(params[:query], 6)
     else
       @bicycles = Bicycle.geocoded
     end
