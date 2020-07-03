@@ -71,3 +71,21 @@ b6.photos.attach(io: b6_bike_3, filename: 'rockrider-3.jpg', content_type: 'imag
 b6.save
 
 u4 = User.create(first_name: "Jamel", last_name: "Debbouze", email: "jamel@debbouze.com", password: "testtest")
+
+b7 = Bicycle.new(model: "Vélo Pliant Tilt 900", description: "Vous recherchez, sans concession, efficacité et agilité dans vos déplacements au quotidien, le Tilt 900, roulant et confortable répondra à vos attentes.", price_per_day: 3.5, start_date: 20191120, end_date: 20210101, address: "1 rue du Faubourg du Temple, Paris", user_id: u4.id)
+b7_bike_1 = URI.open("https://contents.mediadecathlon.com/p1610862/k$3757e2606ff3b3e21db41e0169b41056/sq/VELO+PLIANT+TILT+900+ALUMINIUM+BRUT+VERNIS.webp?f=1000x1000")
+b7.photos.attach(io: b7_bike_1, filename: 'Tilt-1.jpg', content_type: 'image/jpg')
+b7_bike_2 = URI.open("https://contents.mediadecathlon.com/p1741825/k$b49e4d25a18a212fe3b6174ba3cb5728/sq/VELO+PLIANT+TILT+900+ALUMINIUM+BRUT+VERNIS.webp?f=1000x1000")
+b7.photos.attach(io: b7_bike_2, filename: 'Tilt-2.jpg', content_type: 'image/jpg')
+b7_bike_3 = URI.open("https://contents.mediadecathlon.com/p1610873/k$94ba5592011181011f2eabe05102b2af/sq/VELO+PLIANT+TILT+900+ALUMINIUM+BRUT+VERNIS.webp?f=1000x1000")
+b7.photos.attach(io: b7_bike_3, filename: 'Tilt-3.jpg', content_type: 'image/jpg')
+b7.save
+
+b8 = Bicycle.new(model: "Van Rysel Ultra Shimano Ultegra DI2", description: "Fleuron de la gamme vélo route, ce vélo route carbone équipé d'une transmission électrique Ultegra DI2, vous apportera précision et performance ! Ultra performant, ce vélo carbone au groupe Shimano Ultegra DI2, vous apportera l'équilibre parfait entre légèreté, rendement et dynamisme !", price_per_day: 8, start_date: 20191120, end_date: 20210101, address: "Pont Alma, Paris", user_id: u4.id)
+b8_bike_1 = URI.open("https://contents.mediadecathlon.com/p1703006/k$33bb3711dd333010751ff7cbe6cab354/sq/V+LO+DE+ROUTE+FEMME+VAN+RYSEL+ULTRA+RCR+CF+SHIMANO+ULTEGRA+DI2.webp?f=1000x1000")
+b8.photos.attach(io: b8_bike_1, filename: 'rockrider-1.jpg', content_type: 'image/jpg')
+b8_bike_2 = URI.open("https://contents.mediadecathlon.com/p1702960/k$e6a986c0221ddb2a2a3f468987fc5c91/sq/V+LO+DE+ROUTE+FEMME+VAN+RYSEL+ULTRA+RCR+CF+SHIMANO+ULTEGRA+DI2.webp?f=1000x1000")
+b8.photos.attach(io: b8_bike_2, filename: 'rockrider-2.jpg', content_type: 'image/jpg')
+b8_bike_3 = URI.open("https://contents.mediadecathlon.com/p1703005/k$c6213e54c25980096a8f878604f81345/sq/V+LO+DE+ROUTE+FEMME+VAN+RYSEL+ULTRA+RCR+CF+SHIMANO+ULTEGRA+DI2.webp?f=1000x1000")
+b8.photos.attach(io: b8_bike_3, filename: 'rockrider-3.jpg', content_type: 'image/jpg')
+b8.save

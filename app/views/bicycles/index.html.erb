@@ -1,14 +1,24 @@
 <h1 class="text-center py-3">There are <%= @bicycles.length %> bikes available</h1>
 
+<<<<<<< HEAD
 
 <div class="megabox" style="height: calc(100vh - 185px);">
   <div class="cards"  style="flex-grow: 1; overflow: scroll">
+=======
+<div class="megabox">
+
+  <div class="cards">
+>>>>>>> aaf9dc6bfe2d149c5dca58c18ad36113750007d1
     <% @bicycles.each do |bicycle| %>
       <%= link_to bicycle_path(bicycle) do %>
         <div class="card-product">
-            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 300, crop: :fill %>
+            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
             <div class="card-information">
+<<<<<<< HEAD
               <h4><%= bicycle.model %></h4>
+=======
+              <h3><%= bicycle.model %></h3>
+>>>>>>> aaf9dc6bfe2d149c5dca58c18ad36113750007d1
               <p><%= bicycle.price_per_day %> € <span> / day </span></p>
             </div>
         </div>
@@ -16,6 +26,7 @@
     <% end %>
   </div>
 
+<<<<<<< HEAD
   <div style="flex-grow: 5; position: sticky; top: 0; margin-right: 1rem">
       <div
         id="map"
@@ -28,4 +39,16 @@
       ></div>
   </div>
   </div>
+=======
+  <div
+    id="map"
+    style="width: 100%;
+    height: 100vh;
+    top: 0;
+    position: sticky;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+
+>>>>>>> aaf9dc6bfe2d149c5dca58c18ad36113750007d1
 </div>
