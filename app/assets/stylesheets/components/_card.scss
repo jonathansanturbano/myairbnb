@@ -1,28 +1,47 @@
 .cards {
   display: grid;
+  height: calc(100vh - 185px);
   margin: 0 1rem 1rem 1rem;
+  z-index: 2;
 }
 
-.card-product {
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 12px;
-  flex-grow: 1;
+.map-box {
+  position: sticky;
+  bottom: 0;
+  opacity: 0;
+  z-index: 1;
 }
+
+.visible {
+  opacity: 1;
+  z-index: 3;
+}
+
+// .card-product {
+//   grid-template-columns: repeat(2, 1fr);
+//   grid-gap: 12px;
+//   flex-grow: 1;
+// }
 
 .card-product {
   margin: 0 5px 5px 5px;
-  height: 200px;
   border-radius: 4px;
   box-shadow: 2px 1px 2px 0;
   border: 0.5px solid rgba(230, 230, 230, 0.2);
+  padding: 4px;
   display: flex;
+  flex-direction: column;
   background-color: white;
   box-shadow: 1px 1px 1px 0;
 
   img {
     object-fit: cover;
-    height: 100%;
   }
+}
+
+.mapbox {
+  position: absolute;
+  opacity: 0;
 }
 
 a:hover{
@@ -32,7 +51,6 @@ a:hover{
 }
 
 .card-information{
-  padding-left: 1rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -71,7 +89,6 @@ a:hover{
 //   }
 // }
 
-  h3{
-    font-size: 1rem;
-  }
+h3{
+  font-size: 1rem;
 }

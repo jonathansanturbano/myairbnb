@@ -3,7 +3,7 @@
   background: white;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -22,14 +22,32 @@ a {
   color: rgba(0, 0, 0, 0.5);
 }
 
-@media (min-width: 576px) {
-  .navbar-link {
-    padding: 0 1rem;
+@media (max-width: 575) {
+  .navbar-items {
+    list-style-type: none;
+    margin: 0;
+    opacity: 0;
+  }
+
+  .navbar-item {
+    list-style-type: none;
+    margin: 0;
+    opacity: 0;
   }
 }
 
-@media (min-width: 100px) and (max-width: 576) {
-  .navbar-nav .mr-auto > li {
-    padding: 1rem;
+@media (min-width: 576px) {
+  .navbar-items {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+  }
+  .navbar-link {
+    padding: 0 1rem;
+  }
+
+  .toggler {
+    display: none;
   }
 }
+
