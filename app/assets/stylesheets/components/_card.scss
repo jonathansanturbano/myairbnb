@@ -1,20 +1,12 @@
+.megabox{
+
+}
+
 .cards {
   display: grid;
-  height: calc(100vh - 185px);
+  height: calc(100vh - 210px);
   margin: 0 1rem 1rem 1rem;
   z-index: 2;
-}
-
-.map-box {
-  position: sticky;
-  bottom: 0;
-  opacity: 0;
-  z-index: 1;
-}
-
-.visible {
-  opacity: 1;
-  z-index: 3;
 }
 
 // .card-product {
@@ -27,7 +19,6 @@
   margin: 0 5px 5px 5px;
   border-radius: 4px;
   box-shadow: 2px 1px 2px 0;
-  border: 0.5px solid rgba(230, 230, 230, 0.2);
   padding: 4px;
   display: flex;
   flex-direction: column;
@@ -39,9 +30,52 @@
   }
 }
 
-.mapbox {
+.card-information{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  background-color: rgba(137, 196, 244, 0.9);
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 5px;
+
+  h4 {
+    overflow: hidden;
+    padding-top: 1rem;
+  }
+}
+
+// Map Button in Mobile
+
+.map-button-align {
   position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+  padding: 1rem;
+}
+
+#map-opener {
+}
+
+// MapBox in Mobile
+
+.map-box {
+  position: absolute;
+  bottom: 0;
   opacity: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 3;
 }
 
 a:hover{
@@ -50,29 +84,38 @@ a:hover{
   text-decoration: none;
 }
 
-.card-information{
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: black;
-  background-color: rgba(137, 196, 244, 0.1);
-  width: 100%;
+// MapBox in Desktop
 
-  h4 {
-    overflow: hidden;
+@media(min-width: 992px) {
+  .megabox {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cards{
+    z-index: initial;
+    width: 30%;
+  }
+
+  .map-box {
+    position: initial;
+    margin-right: 1rem;
+    opacity: 1;
+    width: 70%;
+    flex-grow: 2;
+    z-index: initial;
+  }
+
+  .map-button-align {
+    display: none;
   }
 }
 
-.megabox {
-  display: flex;
-}
-
-@media(max-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+// @media(max-width: 992px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
 // @media(max-width: 768px) {
 //   .megabox{

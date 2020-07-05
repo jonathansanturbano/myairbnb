@@ -1,10 +1,14 @@
 <%= link_to bicycle_path(bicycle) do %>
-<<<<<<< HEAD
-  <h2><%= bicycle.model %></h2>
-  <p><%= cl_image_tag bicycle.photos.first.key, height: 200, width: 200, crop: :fill %></p>
-=======
-  <h3><%= bicycle.model %></h3>
-  <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
-  <p><%= bicycle.price_per_day %><span> € / day </span></p>
->>>>>>> aaf9dc6bfe2d149c5dca58c18ad36113750007d1
+  <div class="pop-content">
+    <div class="small">
+      <h5 class="pop-title"><%= bicycle.model %></h5>
+      <%= cl_image_tag bicycle.photos.first.key, height: 100, width: 100, crop: :fill %>
+      <p class="pop-price"><%= bicycle.price_per_day %><span> € / day </span></p>
+    </div>
+    <div class="big">
+      <h5 class="pop-title"><%= bicycle.model %></h5>
+      <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 200, crop: :fill %>
+      <p class="pop-price"><%= bicycle.price_per_day %><span> € / day </span></p>
+    </div>
+  </div>
 <% end %>

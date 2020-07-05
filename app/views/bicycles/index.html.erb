@@ -1,27 +1,33 @@
-<h1 class="text-center py-3">There are <%= @bicycles.length %> bikes available</h1>
-<div class="cards" data-simplebar>
-    <% @bicycles.each do |bicycle| %>
-      <%= link_to bicycle_path(bicycle) do %>
-        <div class="card-product">
-            <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+<h1 class="page-title">There are <%= @bicycles.length %> bikes available</h1>
+
+<div class="megabox">
+  <div class="cards" data-simplebar>
+      <% @bicycles.each do |bicycle| %>
+        <%= link_to bicycle_path(bicycle) do %>
+          <div class="card-product">
+            <div style="align-self: center">
+              <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+            </div>
             <div class="card-information">
               <h4><%= bicycle.model %></h4>
               <p><%= bicycle.price_per_day %> € <span> / day </span></p>
             </div>
-        </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-</div>
-<div class="map-box">
-  <div
-    id="map"
-    style="width: 100%;
-    height: calc(100vh - 185px);
-    position: sticky;
-    top: 0"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+  </div>
+
+  <div class="map-box">
+    <div
+      id="map"
+      style="width: 100%;
+      height: calc(100vh - 180px);
+      position: sticky;
+      top: 0"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
 </div>
 
 <div class="map-button-align">

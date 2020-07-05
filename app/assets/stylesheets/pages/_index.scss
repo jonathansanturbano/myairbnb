@@ -1,2 +1,19 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.page-title {
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  .page-title {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .page-title {
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
