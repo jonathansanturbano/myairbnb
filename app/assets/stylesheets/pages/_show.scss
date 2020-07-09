@@ -3,11 +3,17 @@
   text-align: justify;
 }
 
-.buy-button-align {
-  position: sticky;
-  bottom: 0px;
+.book-button-align {
+  position: fixed;
+  bottom: 5px;
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .book-button {
+    width: 20%;
+  }
 }

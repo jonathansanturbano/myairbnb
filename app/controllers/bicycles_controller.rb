@@ -34,7 +34,7 @@ class BicyclesController < ApplicationController
   private
 
   def bicycle_params
-    params.require(:bicycle).permit(:model, :price_per_day, :start_date, :end_date, photos: [])
+    params.require(:bicycle).permit(:model, :price_per_day, photos: [])
   end
 
   def set_coordinates
