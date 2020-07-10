@@ -14,6 +14,7 @@ class BicyclesController < ApplicationController
 
   def show
     @bicycle = Bicycle.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -27,7 +28,7 @@ class BicyclesController < ApplicationController
     if @bicycle.save
       redirect_to bicycle_path(@bicycle)
     else
-      render 'new'
+      render 'bicycles/show'
     end
   end
 

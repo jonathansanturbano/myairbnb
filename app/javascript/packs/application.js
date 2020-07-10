@@ -8,15 +8,24 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { geoloc } from '../plugins/geoloc';
 import { mobileMap } from '../vanilla/mobile_map';
+import { initFlatpickr } from '../plugins/flatpickr';
+import { initModal } from '../vanilla/modal';
 
 initAutocomplete();
 initMapbox();
+
+if (document.querySelector('.datepicker')) {
+  initFlatpickr();
+};
 
 if (document.querySelector('.geoloc')) {
   geoloc();
 };
 
 if (document.querySelector('#map-opener')) {
-  console.log('hello')
   mobileMap();
 }
+
+if (document.querySelector('.book-button')) {
+  initModal();
+};

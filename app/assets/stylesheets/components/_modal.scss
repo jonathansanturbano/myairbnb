@@ -1,0 +1,28 @@
+.modal-formatter {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1601;
+  display: none;
+  padding: 2rem;
+}
+
+.mymodal {
+  background-color: white;
+  text-align: center;
+}
+
+.active {
+  display: flex;
+}
+
+#close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

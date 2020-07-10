@@ -35,7 +35,7 @@
 
   <div class="booking-box">
     <h3><%= @bicycle.model %></h3>
-    <p><%= @bicycle.price_per_day %> € <span> / day </span></p>
+    <p><span id="price-per-day"><%= @bicycle.price_per_day %></span>$ / day</strong></p>
   </div>
 
   <details class="text-center">
@@ -46,5 +46,19 @@
 </div>
 
 <div class="book-button-align">
-  <%= link_to "Book", "#", { class: 'btn book-button btn-lg btn-info btn-block'} %>
+  <div class="book-button btn book-button btn-lg btn-info btn-block">Book</div>
+</div>
+
+<div class="modal-formatter">
+  <div class="mymodal">
+    <%= simple_form_for [@bicycle, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, input_html: {class: "datepicker"}, placeholder: "From when?", input_html: {class: "datepicker", id:"start-date"} %>
+      <%= f.input :end_date, as: :string, input_html: {class: "datepicker"}, placeholder: "To when?", input_html: {class: "datepicker", id:"end-date"} %>
+        <div class="booking-card-total-price">
+          <p><strong>Total Price: <span id="total-price"></span>$</strong></p>
+        </div>
+      <%= f.submit "Book", class: "book-button btn book-button btn-lg btn-info btn-block" %>
+    <% end %>
+    <div class="book-button" id="close">X</div>
+  </div>
 </div>
