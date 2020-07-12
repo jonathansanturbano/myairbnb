@@ -1,0 +1,31 @@
+<h1>My Bookings</h1>
+
+<div class="cards" data-simplebar>
+  <% @bookings.each  do |booking| %>
+    <div class="card-product">
+      <div style="align-self: center">
+        <%= cl_image_tag booking.bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+      </div>
+      <div class="card-information">
+        <p style="font-weight: bold;"><span><%= booking.start_date.strftime('%d %b %Y') %></span> - <span><%= booking.end_date.strftime('%d %b %Y') %></span></p>
+        <p><%= booking.bicycle.model %></p>
+        <p style="font-style: italic;"><%= booking.bicycle.address %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h1>My Bikes</h1>
+
+<div class="cards" data-simplebar>
+  <% @bicycles.each  do |bicycle| %>
+    <div class="card-product">
+      <div style="align-self: center">
+        <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+      </div>
+      <div class="card-information">
+        <p><%= bicycle.model %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

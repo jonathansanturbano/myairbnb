@@ -5,6 +5,9 @@ import 'flatpickr/dist/flatpickr.min.css'
 const initFlatpickr = () => {
   flatpickr(".datepicker", {
     minDate: "today",
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
   });
 
   const string_start_date = document.querySelector("#start-date");
