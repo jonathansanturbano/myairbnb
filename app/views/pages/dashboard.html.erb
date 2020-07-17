@@ -1,31 +1,66 @@
-<h1>My Bookings</h1>
+<div class="container">
 
-<div class="cards" data-simplebar>
-  <% @bookings.each  do |booking| %>
-    <div class="card-product">
-      <div style="align-self: center">
-        <%= cl_image_tag booking.bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+  <ul class="nav nav-pills m-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active tab-link-custom" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My Bikes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link tab-link-custom" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">My Bookings</a>
+    </li>
+    <hr />
+  </ul>
+
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="line">
+        <div class="cards">
+           <% @bicycles.each do |m| %>
+            <div class="card" style="width: 18rem;">
+              <%= link_to bicycle_path(m) do %>
+               <%= cl_image_tag m.photos.first.key, class: "card-img-top" %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= m.model %></h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              <% end %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fas fa-map-marked-alt"></i><%= m.address %></li>
+                <li class="list-group-item">Price : <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></li>
+              </ul>
+              <div class="card-body">
+                <p><%= link_to edit_bicycle_path(m), class:"card-link" do %>
+                  <i class="fas fa-edit"></i>Update the bike
+                <% end %></p>
+                <p><%= link_to bicycle_path(m), method: :delete, data: { confirm: "Are you sure?"} do %>
+                  <i class="fas fa-trash-alt"></i>Delete the bicycle
+                <% end %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div class="card-information">
-        <p style="font-weight: bold;"><span><%= booking.start_date.strftime('%d %b %Y') %></span> - <span><%= booking.end_date.strftime('%d %b %Y') %></span></p>
-        <p><%= booking.bicycle.model %></p>
-        <p style="font-style: italic;"><%= booking.bicycle.address %></p>
+  </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="line">
+          <div class="cards">
+            <% @bookings.each do |booking| %>
+                <div class="card" style="width: 18rem; background: rgb(230, 230, 230);">
+                  <%= cl_image_tag booking.bicycle.photos.first.key, class: "card-img-top", style: "background: linear-gradient(rgba(230,230,230,0.1), rgba(230,230,230,0.1))"%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= booking.bicycle.model %></h5>
+                  <p class="card-text py-3">Here are the details concerning your reservation.</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background: rgb(230, 230, 230);"><i class="fas fa-film"></i><strong><%= booking.start_date %> <span> - </span> <%= booking.end_date %></strong></li>
+                    <li class="list-group-item" style="background: rgb(230, 230, 230);"><i class="fas fa-coins pr-3"></i><strong><%= booking.total_price %><span> $ </span></strong></li>
+                  </ul>
+                </div>
+                </div>
+            <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+ </div>
 
-<h1>My Bikes</h1>
-
-<div class="cards" data-simplebar>
-  <% @bicycles.each  do |bicycle| %>
-    <div class="card-product">
-      <div style="align-self: center">
-        <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
-      </div>
-      <div class="card-information">
-        <p><%= bicycle.model %></p>
-      </div>
-    </div>
-  <% end %>
 </div>
