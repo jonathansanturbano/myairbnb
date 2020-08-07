@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+@import "dashboard";
 
 .page-title {
   text-align: center;
@@ -20,6 +21,6 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   padding-bottom: 4rem;
 }

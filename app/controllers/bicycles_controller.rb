@@ -36,6 +36,15 @@ class BicyclesController < ApplicationController
     @bicycle = Bicycle.find(params[:id])
   end
 
+  def update
+    @bicycle = Bicycle.find(params[:id])
+    if @bicycle.update(bicycle_params)
+      redirect_to bicycle_path(@bicycle)
+    else
+      render 'dashboard'
+    end
+  end
+
   private
 
   def bicycle_params

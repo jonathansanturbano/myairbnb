@@ -1,31 +1,35 @@
 <div class="container">
 
-  <ul class="nav nav-pills m-3" id="pills-tab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active tab-link-custom" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My Bikes</a>
+  <ul class="nav nav-pills pills-custom" id="pills-tab" role="tablist">
+    <li class="nav-item nav-item-custom">
+      <a class="nav-link active tab-link-custom" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+        <p>My Bikes</p>
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link tab-link-custom" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">My Bookings</a>
+    <li class="nav-item nav-item-custom">
+      <a class="nav-link tab-link-custom" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+        <p>My Bookings</p>
+      </a>
     </li>
     <hr />
   </ul>
 
-  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-content" id="pills-tabContent" style="text-align: center; display: flex; justify-content: center">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      <div class="line">
+      <div class="tab-wrap">
         <div class="cards">
            <% @bicycles.each do |m| %>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="margin-bottom: 1rem;">
               <%= link_to bicycle_path(m) do %>
                <%= cl_image_tag m.photos.first.key, class: "card-img-top" %>
                 <div class="card-body">
                   <h5 class="card-title"><%= m.model %></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"><%= m.description  %></p>
                 </div>
               <% end %>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fas fa-map-marked-alt"></i><%= m.address %></li>
-                <li class="list-group-item">Price : <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></li>
+                <li class="list-group-item key-information"><i class="fas fa-map-marked-alt pr-2"></i><%= m.address %></li>
+                <li class="list-group-item key-information"><i class="fas fa-coins pr-2"></i>Price : <%= m.price_per_day %> $ / day</li>
               </ul>
               <div class="card-body">
                 <p><%= link_to edit_bicycle_path(m), class:"card-link" do %>
@@ -42,17 +46,19 @@
   </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div class="line">
+        <div class="tab-wrap">
           <div class="cards">
             <% @bookings.each do |booking| %>
-                <div class="card" style="width: 18rem; background: rgb(230, 230, 230);">
+              <div class="card" style="margin-bottom: 1rem;">
+                <%= link_to bicycle_path(booking.bicycle_id) do %>
                   <%= cl_image_tag booking.bicycle.photos.first.key, class: "card-img-top", style: "background: linear-gradient(rgba(230,230,230,0.1), rgba(230,230,230,0.1))"%>
                 <div class="card-body">
                   <h5 class="card-title"><%= booking.bicycle.model %></h5>
-                  <p class="card-text py-3">Here are the details concerning your reservation.</p>
+                  <p class="card-text py-3">Woohoo! Here are the details concerning your reservation.</p>
+                <% end %>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style="background: rgb(230, 230, 230);"><i class="fas fa-film"></i><strong><%= booking.start_date %> <span> - </span> <%= booking.end_date %></strong></li>
-                    <li class="list-group-item" style="background: rgb(230, 230, 230);"><i class="fas fa-coins pr-3"></i><strong><%= booking.total_price %><span> $ </span></strong></li>
+                    <li class="list-group-item"><i class="fas fa-calendar pr-2"></i><strong><%= booking.start_date %> <span> - </span> <%= booking.end_date %></strong></li>
+                    <li class="list-group-item"><i class="fas fa-coins pr-2"></i><strong><%= booking.total_price %><span> $ </span></strong></li>
                   </ul>
                 </div>
                 </div>

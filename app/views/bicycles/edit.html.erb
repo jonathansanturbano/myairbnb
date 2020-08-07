@@ -1,0 +1,16 @@
+<div class="container text-center">
+  <h1 class="py-3">Update your bike</h1>
+
+  <%= simple_form_for @bicycle, defaults: { input_html: { class: 'form_boxes' } } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="boxes_inline">
+      <%= f.input_field :model, placeholder: "Bike model" %>
+      <%= f.input_field :price_per_day, placeholder: "Daily price" %>
+    </div>
+
+    <%= f.input :address, label: false, placeholder: "Your address" %>
+    <%= f.input :photos,  label: false, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, 'Submit', class: "btn btn-large btn-primary text-center" %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+.pills-custom {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+
+  .nav-item-custom {
+    width: 50%;
+
+    p {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+  }
+}

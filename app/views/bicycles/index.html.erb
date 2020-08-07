@@ -1,21 +1,34 @@
-<h1 class="page-title">There are <%= @bicycles.length %> bikes available</h1>
+<div class="container">
 
-<div class="megabox">
-  <div class="cards" data-simplebar>
-      <% @bicycles.each do |bicycle| %>
-        <%= link_to bicycle_path(bicycle) do %>
-          <div class="card-product">
-            <div style="align-self: center">
-              <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
-            </div>
-            <div class="card-information">
-              <h4><%= bicycle.model %></h4>
-              <p><%= bicycle.price_per_day %> € <span> / day </span></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+
+    <h1 class="page-title"><%= @bicycles.length %> bikes are available</h1>
+
+    <div class="megabox">
+      <div class="cards" data-simplebar>
+          <% @bicycles.each do |bicycle| %>
+            <%= link_to bicycle_path(bicycle) do %>
+              <% if bicycle == @bicycles[-1]  %>
+              <div class="card-product" id="last-card">
+              <% else %>
+              <div class="card-product">
+              <% end %>
+                <div style="align-self: center">
+                  <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
+                </div>
+                <div class="card-information">
+                  <h4><%= bicycle.model %></h4>
+                  <p><%= bicycle.price_per_day %> € <span> / day </span></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+
   </div>
+
+</div>
 
   <div class="map-box">
     <div
@@ -28,7 +41,6 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
   </div>
-</div>
 
 <div class="map-button-align">
   <div class="btn btn-primary" id="map-opener">
