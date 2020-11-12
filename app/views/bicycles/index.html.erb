@@ -8,11 +8,7 @@
       <div class="cards" data-simplebar>
           <% @bicycles.each do |bicycle| %>
             <%= link_to bicycle_path(bicycle) do %>
-              <% if bicycle == @bicycles[-1]  %>
-              <div class="card-product" id="last-card">
-              <% else %>
-              <div class="card-product">
-              <% end %>
+              <div class="card-product" id="<%= bicycle.id %>">
                 <div style="align-self: center">
                   <%= cl_image_tag bicycle.photos.first.key, height: 200, width: 250, crop: :fill %>
                 </div>
