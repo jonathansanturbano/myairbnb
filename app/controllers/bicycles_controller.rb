@@ -61,7 +61,7 @@ class BicyclesController < ApplicationController
       {
         lat: bicycle.latitude,
         lng: bicycle.longitude,
-        id: bicycle.id,
+        image_url: helpers.asset_url('logo'),
         infoWindow: render_to_string(partial: "info_window", locals: { bicycle: bicycle })
       }
     end

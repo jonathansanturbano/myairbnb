@@ -14,7 +14,16 @@ const buildMap = () => {
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-    new mapboxgl.Marker()
+
+    const element = document.createElement('div');
+     element.className = 'marker';
+     element.style.backgroundImage = `url('${marker.image_url}')`;
+     element.style.backgroundSize = 'contain';
+     element.style.backgroundRepeat = 'no-repeat';
+     element.style.width = '40px';
+     element.style.height = '40px';
+
+    new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
@@ -45,13 +54,30 @@ const initMapbox = () => {
 
     my_markers.forEach(marker => {
       marker.addEventListener('mouseenter', (e) => {
-        e.currentTarget.childNodes[0].style.cssText = "height: 50px; width: 50px;"
+        e.currentTarget.style.height = "50px";
+        e.currentTarget.style.width = "50px";
         document.getElementById(`${e.currentTarget.dataset.id}`).classList.add('active');
       });
       marker.addEventListener('mouseleave', (e) => {
-        e.currentTarget.childNodes[0].style.cssText = "height: 41px; width: 27px;"
+        e.currentTarget.style.height = "40px";
+        e.currentTarget.style.width = "40px";
         document.getElementById(`${e.currentTarget.dataset.id}`).classList.remove('active');
       });
+    })
+
+    my_cards.forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        e.currentTarget.classList.add('active');
+        const el = document.querySelector(`[data-id='${card.id}']`);
+        el.style.height = "50px";
+        el.style.width = "50px";
+      });
+      card.addEventListener('mouseleave', (e) => {
+        e.currentTarget.classList.remove('active');
+        const el = document.querySelector(`[data-id='${card.id}']`);
+        el.style.height = "40px";
+        el.style.width = "40px";
+      })
     })
     // my_markers.forEach(marker => {
     //   marker.addEventListener('mouseenter', (e) => {
