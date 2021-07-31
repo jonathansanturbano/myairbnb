@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     user = current_user
     @booking.user = user
     @bicycle = Bicycle.find(params[:bicycle_id])
-    @booking.bicycle_id = @bicycle.id
+    @booking.bicycle = @bicycle
     price_per_day = @bicycle.price_per_day
     end_date = params[:booking][:end_date].to_date
     start_date = params[:booking][:start_date].to_date

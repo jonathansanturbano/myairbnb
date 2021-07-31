@@ -17,8 +17,6 @@ initMapbox();
 initSelect2();
 
 if (document.querySelector('.datepicker')) {
-  const var = <%= @bicycle %>;
-  console.log(var);
   initFlatpickr();
 };
 
